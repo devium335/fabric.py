@@ -29,6 +29,7 @@ mod_config = ModConfig(
     mc_version="1.19.2"
 )
 
+# Blocks and items are optional
 blocks = [
     Block("my_block", "My Block", texture_file="my_block.png")
 ]

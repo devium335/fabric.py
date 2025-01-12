@@ -70,16 +70,16 @@ def _handle_compile(args):
 	scope = {"ModConfig": ModConfig, "Block": Block, "Item": Item}
 	exec(code, scope, scope)
 
-	if "mod_config" not in scope or "blocks" not in scope or "items" not in scope:
+	if "mod_config" not in scope:
 		print(
-			"Error: config_script must define 'mod_config', 'blocks', and 'items'.",
+			"Error: config_script must define 'mod_config'.",
 			file=sys.stderr,
 		)
 		sys.exit(1)
 
 	mod_config = scope["mod_config"]
-	blocks = scope["blocks"]
-	items = scope["items"]
+	blocks = scope.get("blocks", [])  # Default to empty list if not defined
+	items = scope.get("items", [])  # Default to empty list if not defined
 
 	# 2. Generate the mod project
 	output_dir = os.path.abspath(args.output)

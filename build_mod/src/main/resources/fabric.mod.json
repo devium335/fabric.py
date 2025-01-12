@@ -1,0 +1,16 @@
+{
+    "schemaVersion": 1,
+    "id": "examplemod",
+    "version": "1.0.0",
+    "name": "Example Mod",
+    "description": "",
+    "entrypoints": {
+        "main": [
+            "examplemod.Examplemod"
+        ]
+    },
+    "depends": {
+        "fabricloader": "*",
+        "minecraft": "1.21.4"
+    }
+}

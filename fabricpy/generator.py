@@ -26,7 +26,7 @@ def generate_mod_project(mod_config, blocks, items, output_dir):
 	build_gradle_content = dedent(f"""
     plugins {{
         id 'java'
-        id 'fabric-loom' version '1.0-SNAPSHOT' // Example placeholder
+        id 'fabric-loom' version '{mod_config.get_fabric_loom_version()}'
     }}
 
     repositories {{
@@ -36,8 +36,9 @@ def generate_mod_project(mod_config, blocks, items, output_dir):
 
     dependencies {{
         minecraft "com.mojang:minecraft:{mod_config.mc_version}"
-        mappings "net.fabricmc:yarn:{mod_config.mc_version}+build.1" // Example placeholder
-        modImplementation "net.fabricmc:fabric-loader:0.14.0" // Example placeholder
+        mappings "net.fabricmc:yarn:{mod_config.mc_version}+build.1"
+        modImplementation "net.fabricmc:fabric-loader:0.14.0"
+        modImplementation "net.fabricmc.fabric-api:fabric-api:{mod_config.get_fabric_api_version()}"
     }}
 
     group = "com.example"
