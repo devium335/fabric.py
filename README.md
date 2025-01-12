@@ -51,3 +51,5 @@ python3 -m pip install /Users/danielkorkin/Documents/Projects/fabricpy
 fabricpy compile my_first_mod.py -o build_mod --build
 
 fabricpy run build_mod
+
+python3 -m pip install /Users/danielkorkin/Documents/Projects/fabricpy;fabricpy compile my_first_mod.py -o build_mod --build;fabricpy run build_mod

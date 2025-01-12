@@ -149,6 +149,9 @@ class ModConfig:
 		version: str = "1.0.0",
 		description: str = "",
 		mc_version: str = "1.19.2",
+		authors: list = None,
+		group: str = None,
+		contact: dict = None,
 	):
 		"""Initialize the mod config.
 
@@ -157,6 +160,9 @@ class ModConfig:
 		:param version:  Version of the mod
 		:param description: A short description
 		:param mc_version: The target Minecraft version (e.g. "1.19.2")
+		:param authors: List of mod authors
+		:param group: Maven group ID (defaults to mod_id)
+		:param contact: Dictionary with contact info (e.g. {"homepage": "..."})
 		"""
 		if mc_version not in self.VALID_MC_VERSIONS:
 			raise ValueError(
@@ -169,12 +175,16 @@ class ModConfig:
 		self.version = version
 		self.description = description
 		self.mc_version = mc_version
+		self.authors = authors or [mod_name]
+		self.group = group or mod_id
+		self.contact = contact or {"homepage": f"https://github.com/user/{mod_id}"}
 
 	def __repr__(self):
 		return (
 			f"ModConfig(mod_name={self.mod_name}, mod_id={self.mod_id}, "
 			f"version={self.version}, description={self.description}, "
-			f"mc_version={self.mc_version})"
+			f"mc_version={self.mc_version}, authors={self.authors}, "
+			f"group={self.group}, contact={self.contact})"
 		)
 
 	def get_fabric_api_version(self):
