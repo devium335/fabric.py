@@ -284,7 +284,7 @@ def _handle_run(args):
 
 			# Initialize/update Gradle wrapper
 			gradle_cmd = (
-				"gradle wrapper --gradle-version 8.1.1 --distribution-type=bin "
+				"gradle wrapper --gradle-version 8.10 --distribution-type=bin "
 				"--warning-mode all"
 			)
 			run_command(gradle_cmd, cwd=project_dir, env=env)

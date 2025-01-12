@@ -30,7 +30,7 @@ def generate_mod_project(mod_config, blocks, items, output_dir):
 	wrapper_properties = dedent("""
     distributionBase=GRADLE_USER_HOME
     distributionPath=wrapper/dists
-    distributionUrl=https\\://services.gradle.org/distributions/gradle-8.1.1-bin.zip
+    distributionUrl=https\\://services.gradle.org/distributions/gradle-8.10-bin.zip
     networkTimeout=10000
     zipStoreBase=GRADLE_USER_HOME
     zipStorePath=wrapper/dists
@@ -60,10 +60,11 @@ def generate_mod_project(mod_config, blocks, items, output_dir):
 
 	# 2. Generate a basic build.gradle
 	min_java, rec_java = mod_config.get_required_java_version()
+	loom_version = mod_config.get_fabric_loom_version()
 
 	build_gradle_content = dedent(f"""
     plugins {{
-        id 'fabric-loom' version '1.4.+'
+        id 'fabric-loom' version '{loom_version}'
         id 'java'
         id 'java-library'
     }}
@@ -82,14 +83,13 @@ def generate_mod_project(mod_config, blocks, items, output_dir):
     dependencies {{
         minecraft "com.mojang:minecraft:{mod_config.mc_version}"
         mappings "net.fabricmc:yarn:{mod_config.mc_version}+build.1:v2"
-        modImplementation "net.fabricmc:fabric-loader:0.15.3"  // Updated loader version
+        modImplementation "net.fabricmc:fabric-loader:0.16.9"  // Updated loader version
         modImplementation "net.fabricmc.fabric-api:fabric-api:{mod_config.get_fabric_api_version()}"
     }}
 
     java {{
         toolchain {{
             languageVersion = JavaLanguageVersion.of({min_java})
-            vendor = JvmVendorSpec.ADOPTIUM
         }}
         sourceCompatibility = JavaVersion.VERSION_{min_java}
         targetCompatibility = JavaVersion.VERSION_{min_java}
