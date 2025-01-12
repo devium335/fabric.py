@@ -169,3 +169,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Project Specific
+build_mod/
+my_first_mod.py

@@ -45,3 +45,9 @@ fabricpy compile my_mod_config.py -o build_mod --build
 ```
 
 3. A minimal Fabric mod project is generated in `build_mod/`.
+
+python3 -m pip install /Users/danielkorkin/Documents/Projects/fabricpy
+
+fabricpy compile my_first_mod.py -o build_mod --build
+
+fabricpy run build_mod
